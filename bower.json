@@ -1,0 +1,27 @@
+{
+  "name": "jsphotoshop",
+  "description": "Photoshop clone in Javascript",
+  "main": "index.js",
+  "authors": [
+    "Rohit Ratna Sthapit"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "photoshop",
+    "image",
+    "editor",
+    "jpeg"
+  ],
+  "homepage": "https://github.com/nhuzaa/JSphotoshop",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+
+
+  }
+}

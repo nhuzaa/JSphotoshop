@@ -1,0 +1,53 @@
+h1 , h2, h3{
+    color: #FFF;
+}
+
+header,section{
+
+  border-bottom: 3px solid #212121;
+
+}
+
+.jsp-leftcol, .jsp-maincanvas{
+
+  border-right: 3px solid #212121;
+}
+
+#myCanvas{
+  background-color: red;
+}
+header, footer {
+
+}
+
+div {
+    background-color: #424242;
+}
+
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.tools li {
+    border-bottom: #424242;
+  text-align: center;
+}
+.tools li i{
+  text-align: center;
+  margin: 0 auto;
+}
+.tools{
+
+  border : 3px solid #212121;
+}
+
+.jsp-maincanvas{
+  position: relative;
+}
+.image{
+  position: absolute;
+  top :5px;
+  left:10px;
+  background-color: red;
+  border: 2px solid #FFF;
+}
