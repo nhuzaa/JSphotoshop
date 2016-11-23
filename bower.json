@@ -20,8 +20,10 @@
     "test",
     "tests"
   ],
-  "dependencies": {
+  "dependencies": [
+    "materialize",
+    "jquery"
 
 
-  }
+  ]
 }

@@ -48,6 +48,7 @@ function Layer() {
   var zIndex;
   var tempcanvas;
   var tempcontext;
+  var jsp_images = [];
   var images = [];
   var svgs = [];
   var that = this;
@@ -78,7 +79,7 @@ function Layer() {
   this.redraw = function ( canvas ) {
 
     for ( var i = 0; i < images.length; i++ ) {
-      canvas.draw( images[ i ], 0 );
+      that.draw( images[ i ], jsp_images[ i ] );
     }
 
   };
@@ -109,13 +110,12 @@ function Layer() {
           console.log( "image written" );
           //Saving the Image Values
           jsp_image.init( 0, -20, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio );
-          images.push( jsp_image );
-          //  tempcontext.drawImage( img, 0, -20, img.width, img.height, 0, 0, img.width * ratio, img.height * ratio ); // source rectangle );
-          tempcontext.drawImage( img, jsp_image.iPosX, jsp_image.iPosY, jsp_image.iWidth, jsp_image.iHeight, jsp_image.cPosX, jsp_image.cPosY, jsp_image.cWidth, jsp_image.cHeight ); // source rectangle );
-          //that.draw( img, jsp_image );
+          jsp_images.push( jsp_image );
+          that.draw( img, jsp_image );
         };
 
         img.src = e.target.result;
+        images.push( img );
       };
       FR.readAsDataURL( this.files[ 0 ] );
     }
@@ -268,7 +268,7 @@ function main() {
   }
 
   function layerSelected( e ) {
-
+    console.log( "Prev selected" + activeLayerId );
     en( "layerdiv" )[ activeLayerId ].className = 'collection-item';
 
     e.target.className = 'collection-item active';
@@ -281,8 +281,6 @@ function main() {
     do {
       y++;
       var x = e.target.parentNode.childNodes[ y ];
-
-      console.log( 'y value' + y );
 
     } while ( e.target !== x );
 
@@ -299,8 +297,19 @@ function main() {
     }
     var del = en( "layerdiv" );
     del[ activeLayerId ].parentNode.removeChild( del[ activeLayerId ] );
+
+    redraw();
   }
 
+  function redraw() {
+    console.log( 'redrawing' );
+    for ( var x in layers ) {
+      if ( x != activeLayerId ) {
+        layers[ x ].redraw();
+      }
+    }
+    activeLayerId = 0;
+  }
 
   // Set the Dimension for canvas
   canvas.width = CANVAS_WIDTH;
