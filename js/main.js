@@ -45,7 +45,7 @@ function JSP_svg() {
  * Poperty the images , svgs and contents of the each layers
  */
 function Layer() {
-  var zIndex;
+
   var tempcanvas;
   var tempcontext;
   var jsp_images = [];
@@ -53,9 +53,12 @@ function Layer() {
   var svgs = [];
   var that = this;
 
+  this.zIndex;
+
   this.init = function ( _tempcanvas ) {
     tempcanvas = _tempcanvas;
     tempcontext = tempcanvas.getContext( '2d' );
+
   }
 
   this.print = function ( id ) {
@@ -93,7 +96,7 @@ function Layer() {
    * @return {[type]} [description]
    */
   this.readImage = function () {
-    console.log( "image rcv" );
+    console.log( "image rcv" + that.zIndex );
 
     if ( this.files && this.files[ 0 ] ) {
       FR = new FileReader();
@@ -255,6 +258,7 @@ function main() {
   function addlayer() {
     var layer = new Layer();
     layer.init( canvas );
+    layer.zIndex = layers.length;
     layers.push( layer );
 
     var li = document.createElement( 'li' );
@@ -269,6 +273,7 @@ function main() {
 
   function layerSelected( e ) {
     console.log( "Prev selected" + activeLayerId );
+    ei( "fileUpload" ).removeEventListener( "change", layers[ activeLayerId ].readImage, false );
     en( "layerdiv" )[ activeLayerId ].className = 'collection-item';
 
     e.target.className = 'collection-item active';
@@ -285,13 +290,14 @@ function main() {
     } while ( e.target !== x );
 
     activeLayerId = y - 1;
+    ei( "fileUpload" ).addEventListener( "change", layers[ activeLayerId ].readImage, false );
     console.log( "layer selected" + activeLayerId );
   }
 
   function deletelayer() {
     console.log( 'layer' + activeLayerId + "= delected" );
     layers[ activeLayerId ].delete();
-    layers.splice( activeLayerId - 1, 1 );
+    layers.splice( activeLayerId, 1 );
     for ( var i in layers ) {
       console.log( layers[ i ] );
     }
@@ -304,9 +310,11 @@ function main() {
   function redraw() {
     console.log( 'redrawing' );
     for ( var x in layers ) {
-      if ( x != activeLayerId ) {
-        layers[ x ].redraw();
-      }
+
+      console.log( "redraw " + x );
+
+      layers[ x ].redraw();
+
     }
     activeLayerId = 0;
   }
@@ -339,7 +347,7 @@ function main() {
 
 
   // Event Listerners
-  ei( "fileUpload" ).addEventListener( "change", layers[ activeLayerId ].readImage, false );
+
 }
 
 
