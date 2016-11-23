@@ -1,6 +1,9 @@
 
 #viewport , #tempcanvas{
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 50px;
+  left: 80px;
+}
+.jsp-maincanvas{
+  height: 500px;
 }
