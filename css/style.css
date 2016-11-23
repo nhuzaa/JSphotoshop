@@ -1,24 +1,47 @@
-h1 , h2, h3{
+h1, h2, h3 {
     color: #FFF;
 }
 
-header,section{
+header, section {
+    border-bottom: 3px solid #212121;
+}
 
-  border-bottom: 3px solid #212121;
+.jsp-leftcol, .jsp-maincanvas {
+    border-right: 3px solid #212121;
+}
+
+.jsp-rightcol .collection {
+    border: 0px;
+}
+
+.list-header {
+    text-align: center;
+    background-color: #212121;
+    font-weight: bolder;
+    padding: 5px;
+}
+
+.jsp-rightcol .collection-item {
+    background-color: #212121;
+    border: 1px solid #000;
+}
+
+.jsp-maincanvas {
+    position: relative;
+}
+
+#viewport {
+    background-color: red;
 
 }
 
-.jsp-leftcol, .jsp-maincanvas{
+#tempcanvas {
+    background: transparent;
 
-  border-right: 3px solid #212121;
-}
-
-#myCanvas{
-  background-color: red;
-}
-header, footer {
 
 }
+
+header, footer {}
 
 div {
     background-color: #424242;
@@ -30,24 +53,26 @@ div {
 
 .tools li {
     border-bottom: #424242;
-  text-align: center;
-}
-.tools li i{
-  text-align: center;
-  margin: 0 auto;
-}
-.tools{
-
-  border : 3px solid #212121;
+    text-align: center;
 }
 
-.jsp-maincanvas{
-  position: relative;
+.tools li i {
+    text-align: center;
+    margin: 0 auto;
 }
-.image{
-  position: absolute;
-  top :5px;
-  left:10px;
-  background-color: red;
-  border: 2px solid #FFF;
+
+.tools {
+    border: 3px solid #212121;
+}
+
+.jsp-maincanvas {
+    position: relative;
+}
+
+.image {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background-color: red;
+    border: 2px solid #FFF;
 }

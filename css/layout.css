@@ -1,4 +1,6 @@
-#mycanvas{
-  width: 870px;
-  height: 500px;
+
+#viewport , #tempcanvas{
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
