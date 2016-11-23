@@ -7,3 +7,32 @@
 .jsp-maincanvas{
   height: 500px;
 }
+
+header div {
+  padding: 10px;
+  height: 100px;
+}
+
+header div a {
+  margin-top: 20px;
+}
+
+.file-div{
+position: relative;
+padding-top: 10px;
+
+}
+.file-div label{
+  position: absolute;
+  top:20px;
+  left:0px;
+}
+.file-div input{
+  position: absolute;
+  top:20px;
+  left:0px;
+}
+
+#fileUpload{
+  display:None;
+}

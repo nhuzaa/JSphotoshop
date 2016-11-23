@@ -21,112 +21,120 @@
 
     <header class="row grey darken-3">
       <!--breadhcrumbs and nav -->
-      <div class="col s9">
+      <div class="col s4">
         <h3> JS Photoshop </h3>
       </div>
-      <div class="col s3">
-        Open file: <input type="file" id="fileUpload" accept="image/*" /><br />
+      <div class="col s4">
+        <a class="waves-effect waves-light btn" id="download"> <i class="material-icons left">assignment_returned</i> Download </a>
+        <a class="waves-effect waves-light btn" id="save"> <i class="material-icons left">backup</i> SAVE </a>
+
       </div>
-    </header>
+      <div class=" col s4">
+        <div class="file-div">
 
-    <section class="row">
 
-      <!--  jsp-leftcol--->
-      <aside class="col s1  jsp-leftcol">
-        <div class=" row jsp-leftpane">
-          <!-- jsp-toolbox -->
-          <div class="jsp-toolbox">
-            <ul class="tools">
-              <li class=" "><i class="medium material-icons md-light">settings_overscan</i></li>
-              <li class=" "><i class="medium material-icons md-light">insert_chart</i></li>
-              <li class=" "><i class="medium material-icons md-light">open_with </i></li>
-              <li class=" "><i class="medium material-icons md-light">3d_rotation</i> </li>
-            </ul>
-          </div>
 
+                <label for="fileUpload" class="waves-effect waves-light btn" id="download"> <i class="material-icons left">assignment_returned</i> File </label>
+              <input type="file" type="file" id="fileUpload" accept="image/*">
+
+      </div>
+
+      </div>
+
+  </header>
+
+  <section class="row">
+
+    <!--  jsp-leftcol--->
+    <aside class="col s1  jsp-leftcol">
+      <div class=" row jsp-leftpane">
+        <!-- jsp-toolbox -->
+        <div class="jsp-toolbox">
+          <ul class="tools">
+            <li class=" "><i class="medium material-icons md-light">settings_overscan</i></li>
+            <li class=" "><i class="medium material-icons md-light">insert_chart</i></li>
+            <li class=" "><i class="medium material-icons md-light">open_with </i></li>
+            <li class=" "><i class="medium material-icons md-light">3d_rotation</i> </li>
+          </ul>
         </div>
 
-      </aside>
-      <!--END jsp-leftcol -->
+      </div>
 
-      <!-- jsp-rightcol -->
-      <div class="col s11 jsp-rightcol">
-        <div class="row">
-          <!-- jsp-maincanvs -->
-          <article class="col s9 grey darken-4 jsp-maincanvas">
-            <canvas id="viewport" >
+    </aside>
+    <!--END jsp-leftcol -->
+
+    <!-- jsp-rightcol -->
+    <div class="col s11 jsp-rightcol">
+      <div class="row">
+        <!-- jsp-maincanvs -->
+        <article class="col s9 grey darken-4 jsp-maincanvas">
+          <canvas id="viewport">
 
             </canvas>
 
-            <canvas id="tempcanvas" >
+          <canvas id="tempcanvas">
             </canvas>
-          </article>
-          <!-- END  jsp-maincanvs -->
+        </article>
+        <!-- END  jsp-maincanvs -->
 
-          <!--jsp-rightpane -->
-          <aside class="col s3 jsp-rightpane">
-            <div class="row jsp-layers">
+        <!--jsp-rightpane -->
+        <aside class="col s3 jsp-rightpane">
+          <div class="row jsp-layers">
 
 
 
-              <div class="col s12">
-                <div class="card blue-grey darken-1">
-                  <div class="card-content white-text">
-                  <div class="list-header"> <h6>Layers</h6> </div>
-                    <ul class="collection layers-collection">
+            <div class="col s12">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <div class="list-header">
+                    <h6>Layers</h6> </div>
+                  <ul class="collection layers-collection">
 
-            
-                    </ul>
-                    <div class="card-action">
-                      <a id="newlayer" class="btn-floating btn-small waves-effect waves-light red"><i class=" material-icons">add</i></a>
-                      <a id="deletelayer" class="btn-floating btn-small waves-effect waves-light red"> <i class=" material-icons">delete</i></a>
 
-                    </div>
+                  </ul>
+                  <div class="card-action">
+                    <a id="newlayer" class="btn-floating btn-small waves-effect waves-light red"><i class=" material-icons">add</i></a>
+                    <a id="deletelayer" class="btn-floating btn-small waves-effect waves-light red"> <i class=" material-icons">delete</i></a>
+
                   </div>
                 </div>
-
-
               </div>
 
 
+            </div>
 
-                <div class="row jsp-history">
-                </div>
 
-          </aside>
-          <!-- END jsp-rightpane -->
-          </div>
-          </div>
-    </section>
-    <!--ENd  rightcol -->
 
-    <footer class="page-footer grey darken-3">
+            <div class="row jsp-history">
+            </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Footer Content</h5>
-            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-
-          </div>
+        </aside>
+        <!-- END jsp-rightpane -->
         </div>
-      </div <div class="footer-copyright">
+      </div>
+  </section>
+  <!--ENd  rightcol -->
+
+
+  <footer class="page-footer  grey darken-3 ">
+
+    <div class="footer-copyright">
       <div class="container">
-        © 2014 Copyright Rohit Ratna Sthapit
+        © 2016 Copyright Rohit Ratna Sthapit
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
       </div>
-      </div>
-    </footer>
-
     </div>
+  </footer>
 
 
-    <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
-    <script src="bower_components/materialize/bin/materialize.js" charset="utf-8"></script>
-    <script src="js/main.js" charset="utf-8"></script>
+
+
+  </div>
+
+
+  <script src="bower_components/jquery/dist/jquery.js" charset="utf-8"></script>
+  <script src="bower_components/materialize/bin/materialize.js" charset="utf-8"></script>
+  <script src="js/main.js" charset="utf-8"></script>
 </body>
 
 </html>
