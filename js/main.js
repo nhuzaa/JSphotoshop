@@ -3,6 +3,8 @@ var CANVAS_HEIGHT = 400;
 var IMAGE_HEIGHT = 400;
 var IMAGE_WIDTH = 750;
 
+var resizeEvent = new Event( 'resizedone' );
+
 function JSP_image() {
 
   var zIndex;
@@ -41,6 +43,7 @@ function JSP_svg() {
 
 }
 
+
 /**
  * Poperty the images , svgs and contents of the each layers
  */
@@ -60,11 +63,6 @@ function Layer() {
     tempcontext = tempcanvas.getContext( '2d' );
 
   }
-
-  this.print = function ( id ) {
-    console.log( "hi this is layer" + id );
-
-  };
 
   /**
    * Add Image
@@ -133,8 +131,40 @@ function Layer() {
     for ( var i = img.data.length; --i >= 0; )
       img.data[ i ] = 0;
     tempcontext.putImageData( img, 0, 0 );
-    alert( "delete" );
+
   };
+
+  this.resizeWidth = function ( e ) {
+    jsp_images[ 0 ].cWidth = e.target.value;
+    that.delete();
+    document.dispatchEvent( resizeEvent );
+    //that.draw( images[ 0 ], jsp_images[ 0 ] );
+
+  }
+
+  this.resizeHeight = function ( e ) {
+    jsp_images[ 0 ].cHeight = e.target.value;
+    that.delete();
+    document.dispatchEvent( resizeEvent );
+    //that.draw( images[ 0 ], jsp_images[ 0 ] );
+
+  }
+
+  this.cropWidth = function ( e ) {
+    jsp_images[ 0 ].iWidth = jsp_images[ 0 ].cWidth = e.target.value;
+    that.delete();
+    document.dispatchEvent( resizeEvent );
+    //that.draw( images[ 0 ], jsp_images[ 0 ] );
+
+  }
+
+  this.cropHeight = function ( e ) {
+    jsp_images[ 0 ].iHeight = jsp_images[ 0 ].cHeight = e.target.value;
+    that.delete();
+    document.dispatchEvent( resizeEvent );
+    //that.draw( images[ 0 ], jsp_images[ 0 ] );
+
+  }
 
 }
 
@@ -255,6 +285,11 @@ function main() {
   //Layer Selection Event Listernersi
   var layerBoxes = [];
 
+
+
+
+  document.addEventListener( 'resizedone', redraw );
+
   function addlayer() {
     var layer = new Layer();
     layer.init( canvas );
@@ -274,6 +309,10 @@ function main() {
   function layerSelected( e ) {
     console.log( "Prev selected" + activeLayerId );
     ei( "fileUpload" ).removeEventListener( "change", layers[ activeLayerId ].readImage, false );
+    ei( "widthChange" ).removeEventListener( "change", layers[ activeLayerId ].resizeWidth, false );
+    ei( "heightChange" ).removeEventListener( "change", layers[ activeLayerId ].resizeHeight, false );
+    ei( "widthCrop" ).removeEventListener( "change", layers[ activeLayerId ].cropWidth, false );
+    ei( "heightCrop" ).removeEventListener( "change", layers[ activeLayerId ].cropHeight, false );
     en( "layerdiv" )[ activeLayerId ].className = 'collection-item';
 
     e.target.className = 'collection-item active';
@@ -291,6 +330,10 @@ function main() {
 
     activeLayerId = y - 1;
     ei( "fileUpload" ).addEventListener( "change", layers[ activeLayerId ].readImage, false );
+    ei( "widthChange" ).addEventListener( "change", layers[ activeLayerId ].resizeWidth, false );
+    ei( "heightChange" ).addEventListener( "change", layers[ activeLayerId ].resizeHeight, false );
+    ei( "widthCrop" ).addEventListener( "change", layers[ activeLayerId ].cropWidth, false );
+    ei( "heightCrop" ).addEventListener( "change", layers[ activeLayerId ].cropHeight, false );
     console.log( "layer selected" + activeLayerId );
   }
 
@@ -318,6 +361,8 @@ function main() {
     }
     activeLayerId = 0;
   }
+
+
 
   // Set the Dimension for canvas
   canvas.width = CANVAS_WIDTH;
